@@ -1,0 +1,26 @@
+# ignore node_modules everywhere
+**/node_modules/
+
+# Angular build outputs
+**/dist/
+**/build/
+**/.angular/cache/
+
+# environment files 
+*.env
+*.local
+src/environments/*.ts
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# npm/yarn/pnpm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
