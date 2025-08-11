@@ -1,35 +1,10 @@
 <div class="container mt-4">
-  <h2 class="mb-3">Admin Panel - Product List</h2>
-
-  <!-- Add/Edit Form -->
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">
-        {{ editingProductId ? 'Edit Product' : 'Add New Product' }}
-      </h5>
-      <form (ngSubmit)="editingProductId ? updateProduct() : addProduct()">
-        <div class="mb-2">
-          <input type="text" [(ngModel)]="newProduct.title" name="title"
-                 class="form-control" placeholder="Product Title">
-        </div>
-        <div class="mb-2">
-          <input type="number" [(ngModel)]="newProduct.price" name="price"
-                 class="form-control" placeholder="Price">
-        </div>
-        <div class="mb-2">
-          <input type="text" [(ngModel)]="newProduct.image" name="image"
-                 class="form-control" placeholder="Image URL">
-        </div>
-        <button class="btn btn-primary me-2" type="submit">
-          {{ editingProductId ? 'Update' : 'Add' }}
-        </button>
-        <button *ngIf="editingProductId" class="btn btn-secondary" type="button" (click)="cancelEdit()">
-          Cancel
-        </button>
-      </form>
-    </div>
+  <div class="d-flex justify-content-between mb-4 admin-panel-header">
+    <h2 >Admin Panel - Product List</h2>
+    <button class="btn btn-primary" type="submit" routerLink="/add-product">
+      Add New Product
+    </button>
   </div>
-
   <!-- Loading -->
   <div *ngIf="loading" class="alert alert-info">Loading products...</div>
   <!-- Error -->
@@ -47,14 +22,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of products" class="align-baseline">
         <td>{{ product.id }}</td>
-        <td><img [src]="product.image" alt="Product Image" width="60"></td>
-        <td>{{ product.title }}</td>
-        <td>{{ product.price | currency }}</td>
-        <td>
-          <button class="btn btn-warning btn-sm me-1" (click)="editProduct(product)">Edit</button>
-          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
+        <td class="align-content-center text-center"><img [src]="product.image" alt="Product Image" width="60"></td>
+        <td class="align-content-center text-start">{{ product.title }}</td>
+        <td class="align-content-center text-center">{{ product.price | currency }}</td>
+        <td class="align-content-center text-center">
+          <button class="btn btn-warning btn-lg me-lg-3 mb-lg-0 mb-2 " [routerLink]="['/add-product', product.id]" >Edit</button>
+          <button class="btn btn-danger btn-lg " (click)="deleteProduct(product.id)">Delete</button>
         </td>
       </tr>
     </tbody>

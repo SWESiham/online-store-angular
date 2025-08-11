@@ -55,15 +55,15 @@ export class AddProductComponent implements OnInit {
 
     if (this.isEdit) {
       this.http.put(`${this.apiUrl}/${this.productId}`, this.productForm.value).subscribe(() => {
-        this.router.navigate(['/product']);
+        this.router.navigate(['/admin-panel']);
       });
     } else {
       this.http.get<any[]>(this.apiUrl).subscribe(products => {
         const lastId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
-        const newProduct = { id: lastId + 1, ...this.productForm.value };
-
+        const newId:string=String(lastId+1)
+        const newProduct = { id: newId, ...this.productForm.value };
         this.http.post(this.apiUrl, newProduct).subscribe(() => {
-          this.router.navigate(['/product']);
+          this.router.navigate(['/admin-panel']);
         });
       });
     }

@@ -13,6 +13,7 @@ export const routes: Routes = [
     {path: 'product', component: ProductListComponent },
     { path: 'product/:id', component: ProductDetailsComponent },
     { path: 'add-product', component: AddProductComponent },
+    { path: 'add-product/:id', component: AddProductComponent },
     { path: 'cart', component: CartComponent },
     { path: 'admin-panel', component: AdminPanelComponent },
     { path: '**', component: NotFoundComponent }
