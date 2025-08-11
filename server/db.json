@@ -407,18 +407,6 @@
         "rate": 0,
         "count": 0
       }
-    },
-    {
-      "id": null,
-      "title": "prodd",
-      "price": 525,
-      "description": "pod desc bla bla\n",
-      "category": "women's clothing",
-      "image": "https://i.pinimg.com/1200x/71/e2/1d/71e21ded827f85fa98f25fb9ee330ef9.jpg",
-      "rating": {
-        "rate": 0,
-        "count": 0
-      }
     }
   ]
 }
