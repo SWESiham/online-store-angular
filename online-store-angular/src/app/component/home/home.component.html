@@ -1,1 +1,262 @@
-<p>home works!</p>
+<div class="container-fluid mb-5">
+    <div
+      id="carouselExampleFade"
+      class="carousel slide carousel-fade position-relative"
+    >
+      <!-- Text overlay -->
+      <div class="carousel-caption d-none d-md-block text-start">
+        <h1 class="text-uppercase fw-bold">Fall - Winter <br> Collections 2030.</h1>
+        <p>
+         A Special label creating luxury essentials.Ethically crafted <br>with an unwavering commitment to exceptional quality
+        </p>
+        <button type="button" class="btn btn-dark p-3" routerLink="/product">SHOP NOW</button>
+      </div>
+  
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../../../assets/images/hero-1.jpg.webp"
+            class="d-block w-100 carousel-img"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../../../assets/images/hero-2.jpg.webp"
+            class="d-block w-100 carousel-img"
+            alt="..."
+          />
+        </div>
+      </div>
+  
+      <!-- Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon custom-arrow" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon custom-arrow" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  
+  
+  <!-- SEARCH BY TITLE AND FILTER BY CATEGORY PART START-->
+  <div class="container mt-5 mb-5">
+  
+    <div class="row mb-4">
+      <!-- Search by name -->
+      <div class="col-md-6 mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder=" Search by name..."
+          [(ngModel)]="searchName"
+          (input)="searchByName()"
+        />
+      </div>
+  
+      <!-- Filter by category -->
+      <div class="col-md-6 mb-2">
+        <select
+          class="form-select"
+          [(ngModel)]="selectedCategory"
+          (change)="filterByCategory()"
+        >
+          <option value=""> All Categories</option>
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Product List -->
+    <div class="row g-4">
+      <div
+        *ngFor="let product of filteredProducts | slice:0:4"
+        class="col-sm-6 col-md-4 col-lg-3" >
+        
+        <div class="card h-100 shadow-sm border-0">
+          <img
+            [src]="product.image"
+            class="card-img-top p-3"
+            alt="{{ product.title }}"
+            style="height: 200px; object-fit: contain;"
+          />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="text-muted mb-1">Category: {{ product.category }}</p>
+            <p class="fw-bold text-success">Price: ${{ product.price }}</p>
+            <p class="text-warning mb-2">
+              ⭐ {{ product.rating.rate }} ({{ product.rating.count }} reviews)
+            </p>
+            <button class="btn btn-dark mt-auto">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--SEARCH BY TITLE AND FILTER BY CATEGORY PART END -->
+  
+  <div class="container py-5 contcolor mt-5 mb-5">
+    <div class="row align-items-center">
+  
+      <!-- Left menu -->
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="mb-3 text-muted">Clothings Hot</li>
+          <li class="mb-3 fw-bold">Shoe Collection</li>
+          <li class="mb-3 text-muted">Accessories</li>
+        </ul>
+      </div>
+  
+      <!-- Center image -->
+      <div class="col-md-4 position-relative text-center">
+        <img src="../../../assets/images/product-sale.png.webp" class="img-fluid" alt="Bag">
+        <div class="position-absolute top-0 start-50 translate-middle badge bg-dark rounded-circle p-3">
+          <span class="text-white small">Sale Of</span><br>
+          <strong class="text-white">$29.99</strong>
+        </div>
+      </div>
+  
+      <!-- Right details -->
+      <div class="col-md-5">
+        <p class="text-danger text-uppercase fw-bold small">Deal of the Week</p>
+        <h2 class="fw-bold">Multi-pocket Chest Bag Black</h2>
+        <div class="d-flex fs-4 fw-bold my-3">
+          <div class="me-3 text-center">
+            30 <div class="fs-6 fw-normal">Days</div>
+          </div>
+          <div class="me-3 text-center">
+            04 <div class="fs-6 fw-normal">Hours</div>
+          </div>
+          <div class="me-3 text-center">
+            25 <div class="fs-6 fw-normal">Minutes</div>
+          </div>
+          <div class="text-center">
+            17 <div class="fs-6 fw-normal">Seconds</div>
+          </div>
+        </div>
+        <button class="btn btn-dark px-4 py-2" routerLink="/product">Shop Now</button>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  <div class="container mt-5 mb-5">
+  
+  <div class="row align-items-center">
+  
+  
+  <div class="col-8 ">
+  
+    <div class="images d-flex flex-wrap">
+      <img src="../../../assets/images/instagram-1.jpg.webp" class="w-33" alt="Sunglasses">
+      <img src="../../../assets/images/instagram-2.jpg.webp" class=" w-33" alt="Sunglasses">
+      <img src="../../../assets/images/instagram-3.jpg.webp" class="w-33" alt="Sunglasses">
+      <img src="../../../assets/images/instagram-4.jpg.webp" class=" w-33" alt="Sunglasses">
+      <img src="../../../assets/images/instagram-5.jpg.webp" class="w-33" alt="Sunglasses">
+      <img src="../../../assets/images/instagram-6.jpg.webp" class="w-33" alt="Sunglasses">
+  
+     
+  
+  
+    </div>
+  </div>
+
+     <div class="col-4" id="contact">
+  <div class="instagram__text  ">
+   <h2>Instagram</h2>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <h3 ><a href="https://www.instagram.com" class="text-danger">#Male_Fashion</a></h3>
+  </div>
+  </div>
+ 
+ 
+  
+  
+  </div>
+  </div>
+  
+  <div class="container py-5 mt-5">
+    <!-- Section Title -->
+    <div class="text-center mb-5">
+      <p class="text-danger text-uppercase fw-bold mb-1">Latest News</p>
+      <h2 class="fw-bold">Fashion New Trends</h2>
+    </div>
+  
+    <!-- Cards -->
+    
+      <div class="row g-4"  id="blog">
+    
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="../../../assets/images/blog-1.jpg.webp" class="card-img-top" alt="News 1">
+            <div class="card-body bg-white">
+              <p class="text-muted small mb-2">
+                <i class="bi bi-calendar-event"></i> 16 February 2020
+              </p>
+              <h5 class="card-title fw-bold">What Curling Irons Are The Best Ones</h5>
+              <a href="#" class="text-dark text-uppercase fw-bold small text-decoration-none border-bottom border-2">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+    
+    
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="../../../assets/images/blog-2.jpg.webp" class="card-img-top" alt="News 2">
+            <div class="card-body bg-white">
+              <p class="text-muted small mb-2">
+                <i class="bi bi-calendar-event"></i> 21 February 2020
+              </p>
+              <h5 class="card-title fw-bold">Eternity Bands Do Last Forever</h5>
+              <a href="#" class="text-dark text-uppercase fw-bold small text-decoration-none border-bottom border-2">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+    
+    
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="../../../assets/images/blog-3.jpg.webp" class="card-img-top" alt="News 3">
+            <div class="card-body bg-white">
+              <p class="text-muted small mb-2">
+                <i class="bi bi-calendar-event"></i> 28 February 2020
+              </p>
+              <h5 class="card-title fw-bold">The Health Benefits Of Sunglasses</h5>
+              <a href="#" class="text-dark text-uppercase fw-bold small text-decoration-none border-bottom border-2">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+     
+
+    
+
+
+  </div>
+  
+  
+  

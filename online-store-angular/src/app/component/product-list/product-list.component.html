@@ -1,0 +1,64 @@
+<!-- <p>product-list works!</p> -->
+<div class="container-component">
+  <div class="sidebar">
+    <div class="search-bar">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
+          aria-describedby="search-addon" [(ngModel)]="searchName" (input)="searchByName()">
+        <button class="btn btn-outline-secondary" type="button" id="search-addon">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="categories-container">
+      <div class="categories-header" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
+        <span>CATEGORIES</span>
+        <span class="dropdown-arrow"><i class="fas fa-chevron-down"></i></span>
+      </div>
+
+      <div class="categories-list" [class.active]="isDropdownOpen" *ngIf="isDropdownOpen">
+        <div class="category-item" *ngFor="let category of categories" (click)="filterByCategory(category.name)">
+          <span class="category-name">{{ category.name }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="products">
+    <div class="cards row">
+      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let product of pagedProducts">
+        <div class="card ">
+          <img class="card-img-top" [src]="product.image" alt="Card image cap"  (click)="viewProductDetails(product.id)">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <h5 class="cart"> <button class="btn text-danger fw-bold" (click)="addToCart(product)">+ Add To Cart</button></h5>
+            <p class="card-text">{{product.rating.rate}}</p>
+            <p class="card-text fs-5 fw-bold">${{product.price}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product__pagination text-center my-4">
+      <button *ngFor="let page of [].constructor(Math.ceil(products.length / iPage)); let i = index"
+        (click)="gotoPage(i + 1)" [class.active]="cPage === i + 1" class="btn btn-outline-primary mx-1">
+        {{ i + 1 }}
+      </button>
+    </div>
+
+
+
+    
+  </div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div #toastElement class="toast align-items-center text-dark border-1" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body p-3">
+        {{ toastMessage }}
+      </div>
+      <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+</div>

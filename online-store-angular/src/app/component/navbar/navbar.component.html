@@ -1,1 +1,45 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold logo-text" routerLink="/home" (click)="closeNavbar()">
+          <img src="../../../assets/images/logo.png.webp" alt="Male fashion logo" height="30" class="me-2">
+      </a>
+  
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link custom-link" routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" (click)="closeNavbar()">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" routerLink="/product" routerLinkActive="active-link" (click)="closeNavbar()">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" routerLink="/" fragment="blog" (click)="closeNavbar()">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" routerLink="/" fragment="contact" (click)="closeNavbar()">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" routerLink="/admin-panel" routerLinkActive="active-link" (click)="closeNavbar()">Admin Panel</a>
+          </li>
+        </ul>
+  
+        <!-- Icons -->
+        <div class="d-flex align-items-center icons-section">
+          <i class="bi bi-search"></i>
+          <i class="bi bi-heart ms-3"></i>
+          <div class="cart ms-3 d-flex align-items-center">
+            <i class="bi bi-bag"></i>
+            <span class="ms-1 fw-bold">$0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  

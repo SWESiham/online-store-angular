@@ -1,0 +1,22 @@
+/*text appears on top of the image */
+.carousel-caption {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    z-index: 2;
+    color: black;
+   
+  }
+  
+  /*black arrows */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1) grayscale(100);
+  }
+  contcolor{
+    background-color: violet
+  }
+  a{
+    text-decoration: none;
+    
+  }

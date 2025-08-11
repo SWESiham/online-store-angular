@@ -1,1 +1,44 @@
-<p>cart works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Cart Table -->
+    <div class="col-md-8">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>PRODUCT</th>
+            <th>QUANTITY</th>
+            <th>TOTAL</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems; let i = index">
+            <td>
+              <img [src]="item.image" width="50" class="me-2" />
+              {{ item.name }}
+            </td>
+            <td>
+              <button class="btn btn-sm btn-outline-secondary" (click)="updateQuantity(i, -1)">-</button>
+              <span class="mx-2">{{ item.quantity }}</span>
+              <button class="btn btn-sm btn-outline-secondary" (click)="updateQuantity(i, 1)">+</button>
+            </td>
+            <td>{{ item.price * item.quantity | currency }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger" (click)="removeItem(i)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Summary -->
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Summary</h5>
+        <p>Subtotal: {{ subtotal | currency }}</p>
+        <p>Discount ({{ discountPercent }}%): -{{ discount | currency }}</p>
+        <h5>Total: {{ total | currency }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

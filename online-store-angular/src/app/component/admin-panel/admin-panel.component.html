@@ -1,1 +1,62 @@
-<p>admin-panel works!</p>
+<div class="container mt-4">
+  <h2 class="mb-3">Admin Panel - Product List</h2>
+
+  <!-- Add/Edit Form -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ editingProductId ? 'Edit Product' : 'Add New Product' }}
+      </h5>
+      <form (ngSubmit)="editingProductId ? updateProduct() : addProduct()">
+        <div class="mb-2">
+          <input type="text" [(ngModel)]="newProduct.title" name="title"
+                 class="form-control" placeholder="Product Title">
+        </div>
+        <div class="mb-2">
+          <input type="number" [(ngModel)]="newProduct.price" name="price"
+                 class="form-control" placeholder="Price">
+        </div>
+        <div class="mb-2">
+          <input type="text" [(ngModel)]="newProduct.image" name="image"
+                 class="form-control" placeholder="Image URL">
+        </div>
+        <button class="btn btn-primary me-2" type="submit">
+          {{ editingProductId ? 'Update' : 'Add' }}
+        </button>
+        <button *ngIf="editingProductId" class="btn btn-secondary" type="button" (click)="cancelEdit()">
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="alert alert-info">Loading products...</div>
+  <!-- Error -->
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Products Table -->
+  <table class="table table-bordered table-striped" *ngIf="!loading && !error">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td><img [src]="product.image" alt="Product Image" width="60"></td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-1" (click)="editProduct(product)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

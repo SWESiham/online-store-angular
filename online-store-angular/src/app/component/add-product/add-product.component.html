@@ -1,1 +1,83 @@
-<p>add-product works!</p>
+<div class="container py-5">
+  <h2 class="mb-4">{{ isEdit ? 'Edit Product' : 'Add Product' }}</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="row g-3">
+
+    <!-- Title -->
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Title</label>
+      <input type="text" class="form-control" formControlName="title" placeholder="Enter product title">
+      <div class="text-danger small" *ngIf="productForm.get('title')?.touched && productForm.get('title')?.invalid">
+        <span *ngIf="productForm.get('title')?.errors?.['required']">Title is required.</span>
+        <span *ngIf="productForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters.</span>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Price ($)</label>
+      <input type="number" class="form-control" formControlName="price" placeholder="Enter price">
+      <div class="text-danger small" *ngIf="productForm.get('price')?.touched && productForm.get('price')?.invalid">
+        <span *ngIf="productForm.get('price')?.errors?.['required']">Price is required.</span>
+        <span *ngIf="productForm.get('price')?.errors?.['min']">Price must be greater than 0.</span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="col-12">
+      <label class="form-label fw-bold">Description</label>
+      <textarea rows="3" class="form-control" formControlName="description" placeholder="Enter description"></textarea>
+      <div class="text-danger small" *ngIf="productForm.get('description')?.touched && productForm.get('description')?.invalid">
+        <span *ngIf="productForm.get('description')?.errors?.['required']">Description is required.</span>
+        <span *ngIf="productForm.get('description')?.errors?.['minlength']">Description must be at least 10 characters.</span>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Category</label>
+      <select class="form-select" formControlName="category">
+        <option value="" disabled hidden>-- Select Category --</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+      <div class="text-danger small" *ngIf="productForm.get('category')?.touched && productForm.get('category')?.invalid">
+        Category is required.
+      </div>
+    </div>
+
+    <!-- Image URL -->
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Image URL</label>
+      <input type="text" class="form-control" formControlName="image" placeholder="Enter image URL">
+      <div class="text-danger small" *ngIf="productForm.get('image')?.touched && productForm.get('image')?.invalid">
+        <span *ngIf="productForm.get('image')?.errors?.['required']">Image URL is required.</span>
+        <span *ngIf="productForm.get('image')?.errors?.['pattern']">Enter a valid image URL (jpg, jpeg, png, webp, svg).</span>
+      </div>
+    </div>
+
+    <!-- Rating -->
+    <div formGroupName="rating" class="row">
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Rating</label>
+        <input type="number" class="form-control" formControlName="rate" placeholder="Rate (0-5)">
+        <div class="text-danger small" *ngIf="productForm.get('rating.rate')?.touched && productForm.get('rating.rate')?.invalid">
+          <span *ngIf="productForm.get('rating.rate')?.errors?.['min']">Min value is 0.</span>
+          <span *ngIf="productForm.get('rating.rate')?.errors?.['max']">Max value is 5.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Rating Count</label>
+        <input type="number" class="form-control" formControlName="count" placeholder="Number of ratings">
+        <div class="text-danger small" *ngIf="productForm.get('rating.count')?.touched && productForm.get('rating.count')?.invalid">
+          Must be 0 or greater.
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-dark px-4">{{ isEdit ? 'Update' : 'Add' }} Product</button>
+    </div>
+  </form>
+</div>

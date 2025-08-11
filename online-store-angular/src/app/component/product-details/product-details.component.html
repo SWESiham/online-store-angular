@@ -1,1 +1,66 @@
-<p>product-details works!</p>
+<div class="product-detailed">
+    <button (click)="goBack()" class="back-btn">
+      ← Back to Products
+    </button>
+    
+    <div *ngIf="product" class="product-details">
+      <div class="product-image-section">
+        <img [src]="product.image" [alt]="product.title" class="product-image">
+      </div>
+      
+      <div class="product-info-section">
+        <div class="badge">{{ product.category }}</div>
+        <h1>{{ product.title }}</h1>
+        <div class="rating fw-bold" style="color: #5e5959;">
+          <i class="fa-solid fa-star text-warning"></i>
+          <span> {{ product.rating.rate }}/5 </span>
+          <span>({{ product.rating.count }} reviews)</span>
+        </div>
+        <p class="description">{{ product.description }}</p>
+        <p class="price">${{ product.price}}</p>
+       
+        <div class="count">
+          <button class="btn btn-outline-secondary dec" (click)="decrement()">-</button>
+          <span>{{ count }}</span>
+          <button class="btn btn-outline-secondary inc" (click)="increment()">+</button>
+        </div>
+
+        <div class="actions">
+          <button 
+         (click)="addToCart(product)"
+            class="add-to-cart-btn"  
+                   
+          >
+           Add to Cart
+          </button>
+          <button (click)="addToCart(product)" routerLink="/cart" class="Buy-now-btn">
+            BUY NOW
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div #toastElement class="toast align-items-center text-dark border-1" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body p-3">
+            {{ toastMessage }}
+          </div>
+          <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 
+  <i class="fa-solid fa-star"></i>
+      --        MY  LIST         --
+  * 1.  product-details view  today
+  * 2.      //         func   today
+  * 3. cart tazabet           today
+  * 4. 's clothes             today 
+  * 5. id product not true    today done
+  * 6. review code            tommorow
+  * 7. video for user senario tommorow
+  * 8. git push               tommorow 
+  -->
