@@ -15,11 +15,15 @@ const STORAGE_KEY = 'user_cart_v1';
 })
 export class CartService {
   cartItems: CartItem[] = [];
-
+  total: number = 0;
   constructor() {
     this.loadFromStorage();
+    this.calculateTotal();
   }
 
+  calculateTotal() {
+    this.total = this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }
   private saveToStorage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.cartItems));
   }
@@ -45,9 +49,11 @@ export class CartService {
         price: product.price,
         quantity: 1
       });
+
     }
     this.saveToStorage();
-  }
+    this.calculateTotal();
+    }
 
   getCartItems() {
     return this.cartItems;
@@ -55,5 +61,10 @@ export class CartService {
 
   updateStorage() {
     this.saveToStorage();
+    this.calculateTotal();
+  }
+  saveCart() {
+    localStorage.setItem('user_cart_v1', JSON.stringify(this.cartItems));
+    this.calculateTotal(); 
   }
 }

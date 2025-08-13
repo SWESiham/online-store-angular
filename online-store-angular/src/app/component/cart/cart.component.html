@@ -32,13 +32,42 @@
     </div>
 
     <!-- Summary -->
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h5>Summary</h5>
-        <p>Subtotal: {{ subtotal | currency }}</p>
-        <p>Discount ({{ discountPercent }}%): -{{ discount | currency }}</p>
-        <h5>Total: {{ total | currency }}</h5>
+   
+      <div class="col-md-4">
+        <div class="border p-3 mb-3">
+          <h6>DISCOUNT CODES</h6>
+      
+          <div class="input-group">
+            <input class="form-control" placeholder="Coupon code" [(ngModel)]="couponCode">
+            <button class="btn btn-dark" (click)="applyCoupon()">APPLY</button>
+          </div>
+      
+          <!-- الرسائل تحت حقل الإدخال -->
+          <div class="mt-2">
+            <p *ngIf="couponApplied && isVaild && couponCode" class="text-success">Coupon applied successfully</p>
+            <p *ngIf="couponApplied && !isVaild && couponCode" class="text-danger">Invalid coupon code</p>
+          </div>
+     </div>
+
+      <div class="border p-3">
+        <h6>CART TOTAL</h6>
+        <div class="d-flex justify-content-between">
+          <span>Subtotal</span>
+          <span >${{ subtotal | number:'1.2-2' }}</span>
+        </div>
+        <div class="d-flex justify-content-between" *ngIf="discountAmount > 0">
+          <span>Discount</span>
+          <span>-{{ discountAmount | number:'1.2-2' }}%</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span>Total</span>
+          <span [ngStyle]="{ color: discountAmount > 0 ? 'red' : 'black' }">${{ total | number:'1.2-2' }}</span>
+        </div>
+        <button class="btn btn-dark w-100 mt-3">PROCEED TO CHECKOUT</button>
       </div>
     </div>
+
+
+    
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="d-flex justify-content-between mb-4 admin-panel-header">
     <h2 >Admin Panel - Product List</h2>
-    <button class="btn btn-primary" type="submit" routerLink="/add-product">
+    <button class="btn btn-dark" type="submit" routerLink="/add-product">
       Add New Product
     </button>
   </div>
@@ -24,12 +24,12 @@
     <tbody>
       <tr *ngFor="let product of products" class="align-baseline">
         <td>{{ product.id }}</td>
-        <td class="align-content-center text-center"><img [src]="product.image" alt="Product Image" width="60"></td>
-        <td class="align-content-center text-start">{{ product.title }}</td>
-        <td class="align-content-center text-center">{{ product.price | currency }}</td>
+        <td class="align-content-center text-center" routerLink="/product/{{ product.id }}"><img [src]="product.image" alt="Product Image" width="60"></td>
+        <td class="align-content-center text-start" >{{ product.title }}</td>
+        <td class="align-content-center text-center" >{{ product.price | currency }}</td>
         <td class="align-content-center text-center">
-          <button class="btn btn-warning btn-lg me-lg-3 mb-lg-0 mb-2 " [routerLink]="['/add-product', product.id]" >Edit</button>
-          <button class="btn btn-danger btn-lg " (click)="deleteProduct(product.id)">Delete</button>
+          <button class="btn btn-lg me-lg-3 mb-lg-0 mb-2 edit-btn" [routerLink]="['/add-product', product.id]" >Edit</button>
+          <button class="btn  btn-lg delete-btn" (click)="deleteProduct(product.id)">Delete</button>
         </td>
       </tr>
     </tbody>

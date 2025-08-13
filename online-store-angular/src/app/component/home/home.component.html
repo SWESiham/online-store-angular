@@ -88,12 +88,14 @@
         *ngFor="let product of filteredProducts | slice:0:4"
         class="col-sm-6 col-md-4 col-lg-3" >
         
-        <div class="card h-100 shadow-sm border-0">
+        <div class="card h-100 shadow-sm border-0"  style="cursor: pointer;">
           <img
             [src]="product.image"
             class="card-img-top p-3"
             alt="{{ product.title }}"
             style="height: 200px; object-fit: contain;"
+            routerLink="/product/{{ product.id }}"
+           
           />
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ product.title }}</h5>
@@ -102,7 +104,7 @@
             <p class="text-warning mb-2">
               ⭐ {{ product.rating.rate }} ({{ product.rating.count }} reviews)
             </p>
-            <button class="btn btn-dark mt-auto">Add to Cart</button>
+            <button class="btn btn-dark mt-auto" (click)="addToCart(product)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -179,7 +181,7 @@
   </div>
 
      <div class="col-4" id="contact">
-  <div class="instagram__text  ">
+  <div class="instagram__text ">
    <h2>Instagram</h2>
    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   <h3 ><a href="https://www.instagram.com" class="text-danger">#Male_Fashion</a></h3>
@@ -254,9 +256,19 @@
      
 
     
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div #toastElement class="toast align-items-center text-dark border-1" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body p-3">
+              {{ toastMessage }}
+            </div>
+            <button type="button" class="btn-close btn-close-dark me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-  </div>
+  
   
   
   

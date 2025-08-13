@@ -241,8 +241,8 @@
       }
     },
     {
-      "title": "product 21",
-      "price": 2000,
+      "title": "jacket",
+      "price": 200,
       "description": "description of product 21",
       "category": "men's clothing",
       "image": "https://preview.colorlib.com/theme/malefashion/img/product/product-12.jpg.webp",
@@ -253,15 +253,27 @@
       "id": "21"
     },
     {
-      "id": "22",
-      "title": "product 22 ",
-      "price": 2500,
-      "description": "description product 22",
-      "category": "jewelery",
-      "image": "https://preview.colorlib.com/theme/malefashion/img/product/product-13.jpg.webp",
+      "id": "23",
+      "title": "WW | Stylisches und Zweiteiliges Leinen Set",
+      "price": 1500,
+      "description": "Wir präsentieren Ihnen WW, ein elegantes zweiteiliges Wäscheensemble, das mühelose Raffinesse verkörpert. Das Set umfasst ein Oberteil aus Leinen sowie passende Hosen, die beide mit viel Liebe zum Detail und einem modernen Design versehen sind. Dank der bequemen Passform und der vielfältigen Stylingoptionen ist WW die ideale Wahl für alle, die auf der Suche nach einem stilvollen und trendigen Outfit für verschiedene Anlässe sind. Produktdetails: ➡ Aktuelle Styles ➡ Hervorragende Qualität ➡ Ausgewählte Designs ➡ Sehr komfortabel ➡ Langlebig ➡ Leicht zu pflegen ➡ Angenehm zu tragen Unsere professionellen Stylisten haben einen nützlichen Tipp für Dich, um WW optimal zu kombinieren: Dein Outfit muss nicht in einheitlicher Farbe gehalten sein. Schon kleine, harmonierende Details können Deinem L",
+      "category": "women's clothing",
+      "image": "https://i.pinimg.com/1200x/ee/e2/fa/eee2faaa1213ec16fd333ae7e6a5083f.jpg",
       "rating": {
-        "rate": 4,
-        "count": 300
+        "rate": 0,
+        "count": 0
+      }
+    },
+    {
+      "id": "24",
+      "title": "Vintage Bulova watch Gorgeous detailed silver... | Depop",
+      "price": 120,
+      "description": "Vintage Bulova watch Gorgeous detailed silver watch Sold as is, not sure if works Slight wear due to age All stones intact Length: about 6.75 inches - Sold by @lindseyybrookee",
+      "category": "jewelery",
+      "image": "https://i.pinimg.com/736x/cd/0f/8c/cd0f8c088d3f0e006684c928fcc7c275.jpg",
+      "rating": {
+        "rate": 0,
+        "count": 0
       }
     }
   ]

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { CartService } from '../../service/cart.service';
+declare const bootstrap: any;
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -19,7 +20,7 @@ products: any[] = [];
   searchName: string = '';
   selectedCategory: string = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private cartService:CartService) {}
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((data: any) => {
@@ -43,5 +44,16 @@ products: any[] = [];
         (p: any) => p.category === this.selectedCategory
       );
     }
+  }
+  
+ @ViewChild('toastElement', { static: false }) toastElementRef!: ElementRef;
+  toastMessage: string = '';
+  addToCart(product: any): void {
+    this.toastMessage = `${product.title} added to cart!`;
+
+    const toastElement = this.toastElementRef.nativeElement;
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+    this.cartService.addToCart(product);
   }
 }

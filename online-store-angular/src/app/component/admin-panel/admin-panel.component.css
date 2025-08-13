@@ -26,3 +26,42 @@
 
     }
 }
+
+.edit-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 10px 30px ;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    flex: 1;
+    max-width: 150px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  
+  .edit-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+
+  .delete-btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 30px ;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-weight: 500;
+    
+  }
+
+  .delete-btn:hover {
+    background: #333;
+  }

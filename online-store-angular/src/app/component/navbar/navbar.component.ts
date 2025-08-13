@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,public cartService: CartService) {}
 
   closeNavbar() {
     const navbarCollapse = document.getElementById('navbarNav');

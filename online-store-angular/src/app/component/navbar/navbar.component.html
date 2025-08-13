@@ -32,11 +32,11 @@
   
         <!-- Icons -->
         <div class="d-flex align-items-center icons-section">
-          <i class="bi bi-search"></i>
-          <i class="bi bi-heart ms-3"></i>
+          <!-- <i class="bi bi-search"></i> -->
+          <!-- <i class="bi bi-heart ms-3"></i> -->
           <div class="cart ms-3 d-flex align-items-center">
-            <i class="bi bi-bag"></i>
-            <span class="ms-1 fw-bold">$0.00</span>
+            <i class="bi bi-bag" routerLink="/cart"></i>
+            <span class="ms-1 fw-bold">  ${{cartService.total | number:'1.2-2'}}</span>
           </div>
         </div>
       </div>
